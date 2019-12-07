@@ -5,9 +5,7 @@ import imageService from "../services/image-service.js";
 function _drawBgImage() {
   let template = "";
   let photo = store.State.bgImage.url;
-  document.getElementById(
-    "bg-image"
-  ).innerHTML = template += `<img src="${photo}" class="photo">`;
+  document.getElementById("bg-image").style.backgroundImage = `url(${photo}`;
 }
 //TODO Create methods for constructor, and rendering the image to the page
 //      (you may wish to set it as a background image)
