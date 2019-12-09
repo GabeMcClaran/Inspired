@@ -12,6 +12,8 @@ class TodoService {
     // console.log("Getting the Todo List");
     let res = await todoApi.get().then(res => {
       let results = res.data.data.map(rawData => new Todo(rawData));
+      console.log("get todos", res);
+
       store.commit("todos", results);
     });
     console.log("stuff", store.State.todos);
@@ -42,6 +44,7 @@ class TodoService {
     console.log("what is this todoId", todoId);
     todoApi.delete(todoId).then(res => {
       this.getTodos();
+      console.log("remove todo", res);
     });
   }
 

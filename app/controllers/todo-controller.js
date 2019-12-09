@@ -15,9 +15,9 @@ export default class TodoController {
   constructor() {
     store.subscribe("todos", _drawTodos);
     console.log("subscribers data", store.State.todos);
+    TodoService.getTodos();
 
     //TODO Remember to register your subscribers
-    TodoService.getTodos();
   }
 
   async addTodo(e) {

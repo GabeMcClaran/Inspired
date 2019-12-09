@@ -6,13 +6,8 @@ export default class Todo {
   }
 
   get Template() {
-    if (!this.completed) {
-      return `
-    <input  name="toggler" type="checkbox" onclick="app.TodoController.toggleTodoStatus('${this.id}')"<p>${this.description}  <button class="btn btn-danger"onclick="app.TodoController.removeTodo('${this.id}')"> X</button></p></div>
-        `;
-    }
     return `
-        <input   name="toggler" type="checkbox" checkedonclick="app.TodoController.toggleTodoStatus('${this.id}')"<p>${this.description}  <button class="btn btn-danger"onclick="app.TodoController.removeTodo('${this.id}')"> X</button></p></div>
+    <input  name="toggler" type="checkbox" onclick="app.TodoController.toggleTodoStatus('${this.id}')"<p>${this.description}  <button class="btn btn-danger"onclick="app.TodoController.removeTodo('${this.id}')"> X</button></p></div>
         `;
   }
 }

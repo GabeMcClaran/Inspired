@@ -6,6 +6,7 @@ import store from "../store.js";
 
 //TODO Complete rendering data to the screen
 function _drawWeather() {
+  //
   let template = "";
   let displayedWeather = store.State.weather;
   console.log("here", displayedWeather);

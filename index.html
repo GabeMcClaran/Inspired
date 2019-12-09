@@ -19,7 +19,7 @@
       Your Weather Template
     </div>
 
-    <div id="quote">
+    <div id="quote" class="">
       <h4>${displayedQuote.quote}</h4>
       <p>${displayedQuote.author}</p>
       <p>${displayedQuote.fav}</p>
@@ -31,7 +31,7 @@
       <div id="todo-error"></div>
       <label for="">To Do</label>
       <form onsubmit="app.TodoController.addTodo(event)">
-        <div id="todos"></div>
+        <div id="todos" class="text-white"></div>
         <input type="text" name="tasks" class="" placeholder="Tasks..." />
         <button class="btn btn-dark" type="submit">Add Todo</button>
       </form>
