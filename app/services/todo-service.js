@@ -9,24 +9,14 @@ const todoApi = axios.create({
 
 class TodoService {
   async getTodos() {
-    // console.log("Getting the Todo List");
-    let res = await todoApi.get().then(res => {
-      let results = res.data.data.map(rawData => new Todo(rawData));
-      console.log("get todos", res);
-
-      store.commit("todos", results);
-    });
-    console.log("stuff", store.State.todos);
-
-    //TODO Handle this response from the server
+    let res = await todoApi.get();
+    let results = res.data.data.map(rawData => new Todo(rawData));
+    store.commit("todos", results);
   }
 
   async addTodoAsync(todos) {
-    let res = await todoApi.post("", todos);
+    await todoApi.post("", todos);
     this.getTodos();
-    console.log("from addTodoAsync", res.data.data);
-    console.log(todos);
-    //TODO Handle this response from the server (hint: what data comes back, do you want this?)
   }
 
   async toggleTodoStatusAsync(todoId) {
@@ -42,16 +32,15 @@ class TodoService {
 
   async removeTodoAsync(todoId) {
     console.log("what is this todoId", todoId);
-    todoApi.delete(todoId).then(res => {
-      this.getTodos();
-      console.log("remove todo", res);
-    });
+    let res = await todoApi.delete(todoId);
+    this.getTodos();
+    console.log("remove todo", res);
   }
-
-  //TODO Work through this one on your own
-  //		what is the request type
-  //		once the response comes back, what do you need to insure happens?
 }
+
+//TODO Work through this one on your own
+//		what is the request type
+//		once the response comes back, what do you need to insure happens?
 
 const todoService = new TodoService();
 export default todoService;
