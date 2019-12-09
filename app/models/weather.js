@@ -13,4 +13,11 @@ export default class Weather {
     this.city = data.name;
     this.kelvin = data.main.temp;
   }
+
+  kelvinToFar(temp) {
+    let t = 1.8 * (temp - 273) + 32;
+    return t.toFixed(0);
+  }
+
+  // let t = this.kelvinToFar(this.kelvin)
 }

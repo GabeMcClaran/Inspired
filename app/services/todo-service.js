@@ -1,4 +1,5 @@
 import store from "../store.js";
+import Todo from "../models/todo.js";
 
 // @ts-ignore
 const todoApi = axios.create({
@@ -8,18 +9,27 @@ const todoApi = axios.create({
 
 class TodoService {
   async getTodos() {
-    console.log("Getting the Todo List");
-    let res = await todoApi.get();
+    // console.log("Getting the Todo List");
+    let res = await todoApi.get().then(res => {
+      let results = res.data.data.map(rawData => new Todo(rawData));
+      store.commit("todos", results);
+    });
+    console.log("stuff", store.State.todos);
+
     //TODO Handle this response from the server
   }
 
-  async addTodoAsync(todo) {
-    let res = await todoApi.post("", todo);
+  async addTodoAsync(todos) {
+    let res = await todoApi.post("", todos);
+    this.getTodos();
+    console.log("from addTodoAsync", res.data.data);
+    console.log(todos);
     //TODO Handle this response from the server (hint: what data comes back, do you want this?)
   }
 
   async toggleTodoStatusAsync(todoId) {
-    let todo = store.State.todos.find(todo => todo._id == todoId);
+    let todo = store.State.todos.find(todo => todo.id == todoId);
+
     //TODO Make sure that you found a todo,
     //		and if you did find one
     //		change its completed status to whatever it is not (ex: false => true or true => false)
@@ -29,10 +39,15 @@ class TodoService {
   }
 
   async removeTodoAsync(todoId) {
-    //TODO Work through this one on your own
-    //		what is the request type
-    //		once the response comes back, what do you need to insure happens?
+    console.log("what is this todoId", todoId);
+    todoApi.delete(todoId).then(res => {
+      this.getTodos();
+    });
   }
+
+  //TODO Work through this one on your own
+  //		what is the request type
+  //		once the response comes back, what do you need to insure happens?
 }
 
 const todoService = new TodoService();

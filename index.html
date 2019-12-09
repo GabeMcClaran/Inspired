@@ -1,36 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Inspire</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Inspire</title>
-	<link rel="stylesheet" href="assets/css/style.css">
-</head>
+  <body id="bg-image" class="">
+    <div id="weather">
+      Your Weather Template
+    </div>
 
-<body id="bg-image">
-	<div id="weather">
-		Your Weather Template
-	</div>
+    <div id="quote">
+      <h4>${displayedQuote.quote}</h4>
+      <p>${displayedQuote.author}</p>
+      <p>${displayedQuote.fav}</p>
+      The Quote
+    </div>
 
-	<div id="quote">
-		<h4>${displayedQuote.quote}</h4>
-		<p>${displayedQuote.author}</p>
-		<p>${displayedQuote.fav}</p>
-		The Quote
-	</div>
+    <div>
+      A Todo List
+      <div id="todo-error"></div>
+      <label for="">To Do</label>
+      <form onsubmit="app.TodoController.addTodo(event)">
+        <div id="todos"></div>
+        <input type="text" name="tasks" class="" placeholder="Tasks..." />
+        <button class="btn btn-dark" type="submit">Add Todo</button>
+      </form>
+    </div>
 
-	<div>
-		A Todo List
-		<div id="todo-error"></div>
-		<form onsubmit=""></form>
-		<div id="todos"></div>
-	</div>
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
-	<script type="module" src="app/main.js"></script>
-</body>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+    <script type="module" src="app/main.js"></script>
+  </body>
 </html>
-<html>
+<html></html>
